@@ -1,0 +1,1145 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أستاذ سيد عبد الملك 📚</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Tajawal', sans-serif;
+  background: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #2c3e50;
+}
+
+/* ═══ HEADER ═══ */
+.header {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  padding: 0 32px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  box-shadow: 0 4px 20px rgba(79,172,254,0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  font-size: 28px;
+  animation: wiggle 4s ease-in-out infinite;
+}
+@keyframes wiggle {
+  0%,100%{transform:rotate(-5deg)}
+  50%{transform:rotate(5deg)}
+}
+
+.logo-text {
+  font-size: 20px;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-tag {
+  background: rgba(255,255,255,0.25);
+  color: #fff;
+  border: 2px solid rgba(255,255,255,0.5);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  display: none;
+}
+
+.hbtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border-radius: 50px;
+  border: 2px solid rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  cursor: pointer;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  transition: all 0.2s;
+  backdrop-filter: blur(4px);
+}
+.hbtn:hover { background: rgba(255,255,255,0.35); }
+.hbtn.active { background: rgba(255,255,255,0.9); color: #4facfe; }
+
+/* ═══ BREADCRUMB BAR ═══ */
+.topbar {
+  background: #f8faff;
+  border-bottom: 1px solid #e8f0fe;
+  padding: 14px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  position: sticky;
+  top: 64px;
+  z-index: 99;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.bc {
+  font-size: 14px;
+  font-weight: 700;
+  color: #7f8c8d;
+  cursor: pointer;
+  padding: 5px 12px;
+  border-radius: 8px;
+  transition: all 0.15s;
+}
+.bc:hover { background: #e8f4ff; color: #4facfe; }
+.bc.cur { color: #2c3e50; font-weight: 900; cursor: default; background: transparent; }
+.bc-sep { color: #bdc3c7; font-size: 16px; font-weight: 900; }
+
+.action-row {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 20px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.btn:not(:disabled):hover { transform: translateY(-2px); filter: brightness(1.05); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+.btn:not(:disabled):active { transform: translateY(0); }
+
+.btn-blue   { background: #4facfe; color: #fff; box-shadow: 0 4px 14px rgba(79,172,254,0.4); }
+.btn-green  { background: #2ecc71; color: #fff; box-shadow: 0 4px 14px rgba(46,204,113,0.4); }
+.btn-ghost  { background: #fff; color: #7f8c8d; border: 1.5px solid #e0e0e0; }
+.btn-red    { background: #e74c3c; color: #fff; }
+.btn-orange { background: #ff9b42; color: #fff; }
+
+/* ═══ MAIN CONTENT ═══ */
+.page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 24px 60px;
+  min-height: calc(100vh - 120px);
+}
+
+/* ═══ CARDS GRID ═══ */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 860px;
+  width: 100%;
+}
+
+/* ─── FOLDER CARD ─── */
+.fcard {
+  width: 150px;
+  height: 160px;
+  background: #fff;
+  border-radius: 20px;
+  border: 2px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.22s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  position: relative;
+  overflow: hidden;
+  padding: 16px 12px 14px;
+  text-align: center;
+}
+
+.fcard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.13);
+}
+
+/* Colored circle icon */
+.fcard-circle {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  margin: 0 auto 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -1px;
+  flex-shrink: 0;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.18);
+  transition: transform 0.22s;
+}
+.fcard:hover .fcard-circle { transform: scale(1.08); }
+
+.fcard-name { font-size: 13px; font-weight: 800; color: #2c3e50; line-height: 1.4; word-break: break-word; display: -webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.fcard-sub  { font-size: 11px; color: #bdc3c7; margin-top: 5px; font-weight: 600; }
+
+/* ─── FILE CARD ─── */
+.xcard {
+  width: 150px;
+  height: 160px;
+  background: #fff;
+  border-radius: 20px;
+  border: 2px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.22s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  position: relative;
+  overflow: hidden;
+  padding: 14px 12px 12px;
+  text-align: center;
+}
+.xcard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+  border-color: #4facfe;
+}
+
+.xcard-pdf   { border-top: 5px solid #e74c3c; }
+.xcard-pptx  { border-top: 5px solid #ff9b42; }
+.xcard-img   { border-top: 5px solid #2ecc71; }
+
+.xcard-thumb {
+  width: 100%; height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #f0f0f0;
+}
+.xcard-bigicon { font-size: 50px; line-height: 1; margin-bottom: 10px; }
+
+.xcard-tag {
+  position: absolute;
+  top: 10px; left: 10px;
+  font-size: 9px; font-weight: 900;
+  padding: 2px 8px; border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+.tag-pdf  { background: #fdecea; color: #e74c3c; }
+.tag-pptx { background: #fff3e8; color: #ff9b42; }
+.tag-img  { background: #e8faf0; color: #2ecc71; }
+
+.xcard-name { font-size: 12px; font-weight: 700; color: #2c3e50; line-height: 1.4; word-break: break-word; display: -webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+
+/* ─── DEL BUTTON ─── */
+.del-btn {
+  position: absolute;
+  top: 8px; right: 8px;
+  width: 22px; height: 22px;
+  background: rgba(231,76,60,0.08);
+  border: 1.5px solid rgba(231,76,60,0.3);
+  border-radius: 50%;
+  color: #e74c3c;
+  font-size: 10px; font-weight: 900;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  z-index: 5;
+}
+.fcard:hover .del-btn,
+.xcard:hover .del-btn { display: flex; }
+.del-btn:hover { background: #e74c3c; color: #fff; border-color: #e74c3c; }
+
+/* ─── SECTION LABEL ─── */
+.section-sep {
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 32px 0 16px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #bdc3c7;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.section-sep::after { content:''; flex:1; height:1px; background:#f0f0f0; }
+
+/* ─── EMPTY STATE ─── */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  gap: 16px;
+}
+.empty-emoji { font-size: 80px; animation: bob 3s ease-in-out infinite; }
+@keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+.empty-title { font-size: 20px; font-weight: 800; color: #95a5a6; }
+.empty-hint  { font-size: 14px; color: #bdc3c7; font-weight: 600; text-align: center; }
+
+/* ═══ OVERLAY & MODAL ═══ */
+.ov {
+  position: fixed; inset: 0;
+  background: rgba(44,62,80,0.35);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 500;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.22s;
+}
+.ov.open { opacity: 1; pointer-events: all; }
+
+.modal {
+  background: #fff;
+  border-radius: 24px;
+  padding: 32px;
+  width: 440px;
+  max-width: 94vw;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.18);
+  transform: translateY(20px) scale(0.96);
+  transition: transform 0.26s cubic-bezier(.34,1.56,.64,1);
+}
+.ov.open .modal { transform: translateY(0) scale(1); }
+
+.modal-hd {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 24px;
+}
+.modal-title { font-size: 20px; font-weight: 900; display: flex; align-items: center; gap: 10px; }
+.modal-x {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: #f5f5f5; border: none; font-size: 16px;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s; color: #7f8c8d;
+}
+.modal-x:hover { background: #eee; color: #2c3e50; }
+
+.field { margin-bottom: 18px; }
+.flabel { display: block; font-size: 12px; font-weight: 800; color: #7f8c8d; margin-bottom: 8px; letter-spacing: 0.5px; }
+.finput {
+  width: 100%; padding: 13px 16px;
+  background: #f8faff; border: 2px solid #e8f0fe;
+  border-radius: 12px;
+  font-family: 'Tajawal', sans-serif; font-size: 15px; font-weight: 600;
+  color: #2c3e50; outline: none; transition: border-color 0.2s;
+}
+.finput:focus { border-color: #4facfe; background: #fff; }
+.finput::placeholder { color: #bdc3c7; }
+
+/* ── DROP ZONE ── */
+.dz {
+  border: 2.5px dashed #d5e8ff;
+  border-radius: 14px;
+  padding: 30px 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  background: #f8faff;
+}
+.dz:hover, .dz.over { border-color: #4facfe; background: rgba(79,172,254,0.04); }
+.dz input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.dz-ico  { font-size: 38px; margin-bottom: 10px; }
+.dz-txt  { font-size: 14px; font-weight: 600; color: #7f8c8d; line-height: 1.7; }
+.dz-hint { font-size: 11px; color: #bdc3c7; margin-top: 4px; }
+.dz-ok   { font-size: 13px; font-weight: 700; color: #2ecc71; margin-top: 10px; }
+
+.prog-wr { margin-top: 14px; display: none; }
+.prog-lb { font-size: 12px; color: #95a5a6; margin-bottom: 7px; }
+.prog-bg { background: #f0f0f0; border-radius: 20px; height: 8px; overflow: hidden; }
+.prog-fill { height: 100%; background: linear-gradient(90deg,#4facfe,#2ecc71); width: 0%; transition: width 0.3s; border-radius: 20px; }
+
+.ferr { color: #e74c3c; font-size: 12px; font-weight: 700; margin-top: 8px; display: none; }
+.mactions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 26px; }
+
+/* ═══ VIEWER ═══ */
+.viewer {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.88);
+  backdrop-filter: blur(12px);
+  z-index: 900;
+  display: none; flex-direction: column;
+}
+.viewer.open { display: flex; }
+.viewer-hd {
+  background: #fff; border-bottom: 1px solid #e8f0fe;
+  padding: 14px 28px;
+  display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
+}
+.viewer-name { font-size: 16px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+.viewer-body { flex: 1; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.viewer-body iframe { width: 100%; height: 100%; border: none; }
+.viewer-body img { max-width: 92%; max-height: 92%; border-radius: 12px; object-fit: contain; box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
+
+/* ═══ TOAST ═══ */
+.toast-wrap {
+  position: fixed; bottom: 28px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999; display: flex; flex-direction: column; gap: 8px; align-items: center;
+}
+.toast {
+  padding: 12px 26px; border-radius: 50px;
+  font-size: 14px; font-weight: 700;
+  animation: popIn 0.28s cubic-bezier(.34,1.56,.64,1);
+  white-space: nowrap; box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+@keyframes popIn { from{opacity:0;transform:scale(0.8)} to{opacity:1;transform:scale(1)} }
+.toast.ok   { background: #2ecc71; color: #fff; }
+.toast.err  { background: #e74c3c; color: #fff; }
+.toast.info { background: #4facfe; color: #fff; }
+
+/* right-click menu */
+.ctx {
+  position: fixed; background: #fff;
+  border: 1px solid #e8f0fe; border-radius: 14px;
+  padding: 6px; z-index: 1000; min-width: 185px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12); display: none;
+}
+.ctx-item {
+  padding: 10px 16px; font-size: 14px; font-weight: 700;
+  cursor: pointer; border-radius: 9px;
+  display: flex; align-items: center; gap: 8px;
+  transition: background 0.12s; color: #2c3e50;
+}
+.ctx-item:hover { background: #f5f9ff; }
+.ctx-item.danger { color: #e74c3c; }
+.ctx-item.danger:hover { background: #fff5f5; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-thumb { background: #d5e8ff; border-radius: 10px; }
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<div class="header">
+  <div class="logo">
+    <div class="logo-icon">📚</div>
+    <div class="logo-text">أستاذ سيد عبد الملك</div>
+  </div>
+  <div class="header-left">
+    <div class="admin-tag" id="adminTag">👑 وضع التعديل</div>
+    <button class="hbtn" id="fsBtn" onclick="toggleFS()" title="ملء الشاشة" style="padding:8px 14px;font-size:18px;">⛶</button>
+    <button class="hbtn" id="authBtn" onclick="clickAuth()">
+      <span id="authIco">🔒</span><span id="authTxt">دخول</span>
+    </button>
+  </div>
+</div>
+
+<!-- ═══ TOP BAR ═══ -->
+<div class="topbar">
+  <button id="backBtn" onclick="goBack()" style="
+    display:none;
+    align-items:center; gap:6px;
+    padding:8px 16px;
+    border-radius:50px;
+    border:2px solid #e8f0fe;
+    background:#f8faff;
+    color:#4facfe;
+    cursor:pointer;
+    font-family:'Tajawal',sans-serif;
+    font-size:15px; font-weight:800;
+    transition:all 0.18s;
+    white-space:nowrap;
+    flex-shrink:0;
+  " onmouseenter="this.style.background='#e8f4ff'" onmouseleave="this.style.background='#f8faff'">
+    ＜ رجوع
+  </button>
+  <div class="breadcrumb" id="bc"></div>
+  <div class="action-row">
+    <button class="btn btn-green" id="btnFolder" onclick="showFolderModal()" disabled>📁 مجلد جديد</button>
+    <button class="btn btn-blue"  id="btnUpload" onclick="showUploadModal()" disabled>⬆️ رفع ملف</button>
+  </div>
+</div>
+
+<!-- ═══ PAGE ═══ -->
+<div class="page" id="page"></div>
+
+<!-- ═══ MODALS ═══ -->
+
+<!-- Folder -->
+<div class="ov" id="folderOv">
+  <div class="modal">
+    <div class="modal-hd">
+      <div class="modal-title">📁 مجلد جديد</div>
+      <button class="modal-x" onclick="closeOv('folderOv')">✕</button>
+    </div>
+    <div class="field">
+      <label class="flabel">اسم المجلد</label>
+      <input class="finput" type="text" id="folderName"
+        placeholder="مثال: لغتي، القراءة، مهارة الجهر..."
+        maxlength="60"
+        onkeydown="if(event.key==='Enter')doCreateFolder()">
+    </div>
+    <div class="ferr" id="folderErr"></div>
+    <div class="mactions">
+      <button class="btn btn-ghost" onclick="closeOv('folderOv')">إلغاء</button>
+      <button class="btn btn-green" onclick="doCreateFolder()">✅ إنشاء</button>
+    </div>
+  </div>
+</div>
+
+<!-- Upload -->
+<div class="ov" id="uploadOv">
+  <div class="modal" style="width:500px">
+    <div class="modal-hd">
+      <div class="modal-title">⬆️ رفع الملفات</div>
+      <button class="modal-x" onclick="closeOv('uploadOv')">✕</button>
+    </div>
+    <div class="field">
+      <label class="flabel">الملفات (يمكن اختيار أكثر من ملف)</label>
+      <div class="dz" id="dz">
+        <input type="file" id="fileInp"
+          accept=".pdf,.ppt,.pptx,.jpg,.jpeg,.png,.gif,.webp,.bmp"
+          multiple
+          onchange="onFiles(this)">
+        <div class="dz-ico">📎</div>
+        <div class="dz-txt">اسحب الملفات هنا أو انقر للاختيار</div>
+        <div class="dz-hint">PDF • PowerPoint • صور (JPG، PNG...) — حتى 20 ميجابايت لكل ملف</div>
+        <div class="dz-ok" id="dzOk"></div>
+      </div>
+      <div id="fileList" style="margin-top:10px;max-height:160px;overflow-y:auto;display:none"></div>
+      <div class="prog-wr" id="progWr">
+        <div class="prog-lb">⏳ جاري تحميل الملفات...</div>
+        <div class="prog-bg"><div class="prog-fill" id="progFill"></div></div>
+      </div>
+    </div>
+    <div class="ferr" id="uploadErr"></div>
+    <div class="mactions">
+      <button class="btn btn-ghost" onclick="closeOv('uploadOv')">إلغاء</button>
+      <button class="btn btn-blue" onclick="doUpload()">🚀 رفع الكل</button>
+    </div>
+  </div>
+</div>
+
+<!-- Auth -->
+<div class="ov" id="authOv">
+  <div class="modal">
+    <div class="modal-hd">
+      <div class="modal-title">🔐 دخول الأستاذ</div>
+      <button class="modal-x" onclick="closeOv('authOv')">✕</button>
+    </div>
+    <div class="field">
+      <label class="flabel">كلمة المرور</label>
+      <input class="finput" type="password" id="pwInp"
+        placeholder="أدخل كلمة المرور"
+        onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <div class="ferr" id="authErr">❌ كلمة المرور غير صحيحة</div>
+    <div class="mactions">
+      <button class="btn btn-ghost" onclick="closeOv('authOv')">إلغاء</button>
+      <button class="btn btn-blue" onclick="doLogin()">دخول</button>
+    </div>
+  </div>
+</div>
+
+<!-- Change PW -->
+<div class="ov" id="cpwOv">
+  <div class="modal">
+    <div class="modal-hd">
+      <div class="modal-title">🔑 تغيير كلمة المرور</div>
+      <button class="modal-x" onclick="closeOv('cpwOv')">✕</button>
+    </div>
+    <div class="field">
+      <label class="flabel">كلمة المرور الحالية</label>
+      <input class="finput" type="password" id="cpwOld">
+    </div>
+    <div class="field">
+      <label class="flabel">كلمة المرور الجديدة</label>
+      <input class="finput" type="password" id="cpwNew">
+    </div>
+    <div class="field">
+      <label class="flabel">تأكيد كلمة المرور الجديدة</label>
+      <input class="finput" type="password" id="cpwNew2">
+    </div>
+    <div class="ferr" id="cpwErr"></div>
+    <div class="mactions">
+      <button class="btn btn-ghost" onclick="closeOv('cpwOv')">إلغاء</button>
+      <button class="btn btn-orange" onclick="doChangePw()">💾 حفظ</button>
+    </div>
+  </div>
+</div>
+
+<!-- Rename -->
+<div class="ov" id="renameOv">
+  <div class="modal">
+    <div class="modal-hd">
+      <div class="modal-title">✏️ إعادة تسمية</div>
+      <button class="modal-x" onclick="closeOv('renameOv')">✕</button>
+    </div>
+    <div class="field">
+      <label class="flabel">الاسم الجديد</label>
+      <input class="finput" type="text" id="renameInp"
+        onkeydown="if(event.key==='Enter')doRename()">
+    </div>
+    <div class="mactions">
+      <button class="btn btn-ghost" onclick="closeOv('renameOv')">إلغاء</button>
+      <button class="btn btn-blue" onclick="doRename()">✅ حفظ</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ VIEWER ═══ -->
+<div class="viewer" id="viewer">
+  <div class="viewer-hd">
+    <div class="viewer-name" id="viewerName"></div>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-orange" onclick="doDownload()">⬇️ تنزيل</button>
+      <button class="btn btn-ghost"  onclick="closeViewer()">✕ إغلاق</button>
+    </div>
+  </div>
+  <div class="viewer-body" id="viewerBody"></div>
+</div>
+
+<!-- Right-click Menu -->
+<div class="ctx" id="ctx"></div>
+
+<!-- Toast -->
+<div class="toast-wrap" id="toastWrap"></div>
+
+<script>
+/* ══════════════════════════════════
+   DATA
+══════════════════════════════════ */
+const FS_KEY = 'am_v4';
+const PW_KEY = 'am_pw';
+const DEF_PW = 'admin1234';
+
+/* Supabase */
+const SB_URL    = 'https://ibvjlvygxtgaqdwavwob.supabase.co';
+const SB_KEY    = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlidmpsdnlneHRnYXFkd2F2d29iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYxODQ0ODcsImV4cCI6MjA5MTc2MDQ4N30.OFz648KY_QOrZonCP-92H9Dp-bTC6vf8Ir2AuHnUD7o';
+const SB_BUCKET = 'files';
+
+async function sbUpload(file, path){
+  const res = await fetch(`${SB_URL}/storage/v1/object/${SB_BUCKET}/${path}`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${SB_KEY}`,
+      'Content-Type': file.type || 'application/octet-stream',
+      'x-upsert': 'true'
+    },
+    body: file
+  });
+  if(!res.ok){ const e = await res.text(); throw new Error(e); }
+  return `${SB_URL}/storage/v1/object/public/${SB_BUCKET}/${path}`;
+}
+
+async function sbDelete(paths){
+  await fetch(`${SB_URL}/storage/v1/object/${SB_BUCKET}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${SB_KEY}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ prefixes: paths })
+  });
+}
+
+let admin   = false;
+let cur     = 'root';
+let pendingFiles = [];
+let rnId    = null;
+
+const CIRCLE_COLORS = [
+  ['#4facfe','#00f2fe'], ['#43e97b','#38f9d7'], ['#fa709a','#fee140'],
+  ['#a18cd1','#fbc2eb'], ['#fda085','#f6d365'], ['#84fab0','#8fd3f4'],
+  ['#f093fb','#f5576c'], ['#4facfe','#43e97b'], ['#30cfd0','#667eea'],
+  ['#ff9a9e','#fecfef'], ['#a1c4fd','#c2e9fb'], ['#fddb92','#d1fdff']
+];
+
+function FS()   { try{ const r=localStorage.getItem(FS_KEY); if(r) return JSON.parse(r); }catch(e){} return mkFS(); }
+function mkFS() { return { root:{id:'root',name:'الرئيسية',type:'folder',children:[],parentId:null} }; }
+function saveFS(fs){ try{ localStorage.setItem(FS_KEY,JSON.stringify(fs)); return true; }catch(e){ toast('التخزين ممتلئ!','err'); return false; } }
+function upd(fn){ const fs=FS(); fn(fs); saveFS(fs); }
+function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,6); }
+function getPW(){ return localStorage.getItem(PW_KEY)||DEF_PW; }
+function rndColor(){ return CIRCLE_COLORS[Math.floor(Math.random()*CIRCLE_COLORS.length)]; }
+function initials(name){ return name.trim().slice(0,2); }
+
+function pathOf(fs, id){
+  const p=[]; let c=id;
+  while(c){ const n=fs[c]; if(!n) break; p.unshift(n); c=n.parentId; }
+  return p;
+}
+
+/* ══════════════════════════════════
+   AUTH
+══════════════════════════════════ */
+function clickAuth(){
+  if(admin){
+    const r=confirm('تسجيل الخروج؟\n\nاضغط إلغاء لتغيير كلمة المرور');
+    if(r) doLogout();
+    else{ ['cpwOld','cpwNew','cpwNew2'].forEach(i=>document.getElementById(i).value=''); document.getElementById('cpwErr').style.display='none'; openOv('cpwOv'); }
+  } else {
+    document.getElementById('pwInp').value=''; document.getElementById('authErr').style.display='none';
+    openOv('authOv'); setTimeout(()=>document.getElementById('pwInp').focus(),150);
+  }
+}
+
+function doLogin(){
+  if(document.getElementById('pwInp').value===getPW()){
+    admin=true; closeOv('authOv'); setAdminUI(); toast('🎉 أهلاً يا أستاذ!','ok');
+  } else {
+    document.getElementById('authErr').style.display='block';
+    document.getElementById('pwInp').select();
+  }
+}
+
+function doLogout(){ admin=false; setAdminUI(); toast('👋 تم تسجيل الخروج','info'); }
+
+function setAdminUI(){
+  document.getElementById('authIco').textContent  = admin ? '🔓' : '🔒';
+  document.getElementById('authTxt').textContent  = admin ? 'الأستاذ' : 'دخول';
+  document.getElementById('authBtn').classList.toggle('active', admin);
+  document.getElementById('adminTag').style.display = admin ? 'inline' : 'none';
+  document.getElementById('btnFolder').disabled = !admin;
+  document.getElementById('btnUpload').disabled = !admin;
+  render();
+}
+
+function doChangePw(){
+  const o=document.getElementById('cpwOld').value,
+        n=document.getElementById('cpwNew').value,
+        n2=document.getElementById('cpwNew2').value,
+        el=document.getElementById('cpwErr');
+  if(o!==getPW())    { showErr(el,'❌ كلمة المرور الحالية خاطئة'); return; }
+  if(n.length<4)     { showErr(el,'❌ يجب أن تكون 4 أحرف على الأقل'); return; }
+  if(n!==n2)         { showErr(el,'❌ كلمتا المرور غير متطابقتان'); return; }
+  localStorage.setItem(PW_KEY,n); closeOv('cpwOv'); toast('✅ تم تغيير كلمة المرور','ok');
+}
+
+/* ══════════════════════════════════
+   RENDER
+══════════════════════════════════ */
+function render(){
+  renderBC();
+  renderPage();
+}
+
+function goBack(){
+  const fs=FS(), it=fs[cur];
+  if(it && it.parentId) navTo(it.parentId);
+}
+
+function renderBC(){
+  const fs=FS(), path=pathOf(fs,cur);
+  document.getElementById('bc').innerHTML = path.map((item,i)=>{
+    const isLast = i===path.length-1;
+    return (i>0?'<span class="bc-sep">›</span>':'')+
+      `<span class="bc ${isLast?'cur':''}" onclick="${isLast?'': `navTo('${item.id}')`}">${esc(item.name)}</span>`;
+  }).join('');
+  const backBtn = document.getElementById('backBtn');
+  backBtn.style.display = (path.length > 1) ? 'flex' : 'none';
+}
+
+function renderPage(){
+  const fs     = FS();
+  const folder = fs[cur];
+  if(!folder){ cur='root'; render(); return; }
+
+  const children = (folder.children||[]).filter(c=>fs[c]);
+  const folders  = children.filter(c=>fs[c].type==='folder');
+  const files    = children.filter(c=>fs[c].type==='file');
+  const page     = document.getElementById('page');
+
+  if(!children.length){
+    page.innerHTML = `<div class="empty">
+      <div class="empty-emoji">🗂️</div>
+      <div class="empty-title">لا يوجد شيء هنا بعد</div>
+      <div class="empty-hint">${admin ? 'اضغط "مجلد جديد" أو "رفع ملف" للبدء' : 'لا يوجد محتوى حتى الآن'}</div>
+    </div>`;
+    return;
+  }
+
+  let html = '';
+
+  // Folders
+  if(folders.length){
+    html += `<div class="grid">${folders.map((id,idx)=>{
+      const it=fs[id];
+      const del = admin ? `<button class="del-btn" onclick="event.stopPropagation();removeItem('${id}')">✕</button>` : '';
+      const cnt = (it.children||[]).length;
+      const col = it.color || CIRCLE_COLORS[idx % CIRCLE_COLORS.length];
+      const grad = `linear-gradient(135deg, ${col[0]}, ${col[1]})`;
+      const initLetter = initials(it.name);
+      return `<div class="fcard" onclick="navTo('${id}')" oncontextmenu="showCtx(event,'${id}','folder')">
+        ${del}
+        <div class="fcard-circle" style="background:${grad}">${initLetter}</div>
+        <div class="fcard-name">${esc(it.name)}</div>
+        <div class="fcard-sub">${cnt} عنصر</div>
+      </div>`;
+    }).join('')}</div>`;
+  }
+
+  // Files
+  if(files.length){
+    if(folders.length) html += `<div class="section-sep">الملفات</div>`;
+    html += `<div class="grid">${files.map(id=>{
+      const it  = fs[id];
+      const del = admin ? `<button class="del-btn" onclick="event.stopPropagation();removeItem('${id}')">✕</button>` : '';
+      let inner = '', cls='', tag='';
+      if(it.fileType==='pdf'){
+        cls='xcard-pdf'; tag=`<span class="xcard-tag tag-pdf">PDF</span>`;
+        inner=`<div class="xcard-bigicon">📄</div>`;
+      } else if(it.fileType==='pptx'){
+        cls='xcard-pptx'; tag=`<span class="xcard-tag tag-pptx">PPT</span>`;
+        inner=`<div class="xcard-bigicon">📊</div>`;
+      } else {
+        cls='xcard-img'; tag=`<span class="xcard-tag tag-img">صورة</span>`;
+        inner=`<img class="xcard-thumb" src="${it.data}" alt="${esc(it.name)}">`;
+      }
+      return `<div class="xcard ${cls}" onclick="openFile('${id}')" oncontextmenu="showCtx(event,'${id}','file')">
+        ${tag}${del}${inner}
+        <div class="xcard-name">${esc(it.name)}</div>
+      </div>`;
+    }).join('')}</div>`;
+  }
+
+  page.innerHTML = html;
+}
+
+/* ══════════════════════════════════
+   NAV
+══════════════════════════════════ */
+function navTo(id){
+  const fs=FS(); if(!fs[id]) return;
+  cur=id; render();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/* ══════════════════════════════════
+   FOLDER
+══════════════════════════════════ */
+function showFolderModal(){
+  if(!admin) return;
+  document.getElementById('folderName').value='';
+  document.getElementById('folderErr').style.display='none';
+  openOv('folderOv');
+  setTimeout(()=>document.getElementById('folderName').focus(),150);
+}
+
+function doCreateFolder(){
+  const name=document.getElementById('folderName').value.trim();
+  const el=document.getElementById('folderErr');
+  if(!name){ showErr(el,'⚠️ أدخل اسماً للمجلد'); return; }
+  const id=uid();
+  upd(fs=>{
+    fs[id]={ id, name, color:rndColor(), type:'folder', children:[], parentId:cur };
+    if(!fs[cur].children) fs[cur].children=[];
+    fs[cur].children.push(id);
+  });
+  closeOv('folderOv');
+  toast(`📁 تم إنشاء "${name}"`, 'ok');
+  render();
+}
+
+/* ══════════════════════════════════
+   UPLOAD
+══════════════════════════════════ */
+function showUploadModal(){
+  if(!admin) return;
+  pendingFiles=[];
+  document.getElementById('fileInp').value='';
+  document.getElementById('dzOk').textContent='';
+  document.getElementById('uploadErr').style.display='none';
+  document.getElementById('progWr').style.display='none';
+  document.getElementById('progFill').style.width='0%';
+  document.getElementById('fileList').style.display='none';
+  document.getElementById('fileList').innerHTML='';
+  openOv('uploadOv');
+}
+
+function onFiles(inp){
+  const files=Array.from(inp.files); if(!files.length) return;
+  const el=document.getElementById('uploadErr');
+  const imgs=['jpg','jpeg','png','gif','webp','bmp'];
+  const listEl=document.getElementById('fileList');
+  el.style.display='none';
+  pendingFiles=[];
+  const errors=[];
+  listEl.innerHTML='';
+  listEl.style.display='block';
+
+  files.forEach((file,idx)=>{
+    const ext=file.name.split('.').pop().toLowerCase();
+    const isImg=imgs.includes(ext), isPdf=ext==='pdf', isPpt=['ppt','pptx'].includes(ext);
+    if(!isImg&&!isPdf&&!isPpt){ errors.push(`❌ ${file.name}: نوع غير مدعوم`); return; }
+    if(file.size>200*1024*1024){ errors.push(`❌ ${file.name}: أكبر من 200 ميجابايت`); return; }
+
+    const row=document.createElement('div');
+    row.id='frow_'+idx;
+    row.style.cssText='display:flex;align-items:center;gap:8px;padding:7px 10px;background:#f8faff;border-radius:10px;margin-bottom:6px;font-size:13px;font-weight:700;color:#2c3e50;';
+    row.innerHTML=`<span>${isPdf?'📄':isPpt?'📊':'🖼️'}</span><span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(file.name)}</span><span id="fst_${idx}" style="color:#bdc3c7">⏳</span>`;
+    listEl.appendChild(row);
+
+    pendingFiles.push({ idx, name:file.name, fileType: isPdf?'pdf': isPpt?'pptx':'img', file });
+  });
+
+  if(errors.length) showErr(el, errors.join('\n'));
+  if(pendingFiles.length>0){
+    document.getElementById('dzOk').textContent=`✅ تم اختيار ${pendingFiles.length} ملف`;
+    document.getElementById('progWr').style.display='block';
+  }
+}
+
+async function doUpload(){
+  if(!pendingFiles||!pendingFiles.length){ showErr(document.getElementById('uploadErr'),'⚠️ اختر ملفاً على الأقل'); return; }
+  const errEl=document.getElementById('uploadErr');
+  const progWr=document.getElementById('progWr');
+  const progFill=document.getElementById('progFill');
+  progWr.style.display='block';
+  progFill.style.width='0%';
+
+  let done=0;
+  const total=pendingFiles.length;
+  const uploaded=[];
+  const errs=[];
+
+  for(const p of pendingFiles){
+    const stEl=document.getElementById('fst_'+p.idx);
+    try {
+      const path = uid()+'_'+p.name.replace(/[^a-zA-Z0-9._-]/g,'_');
+      const url = await sbUpload(p.file, path);
+      uploaded.push({ name:p.name, fileType:p.fileType, url, path });
+      done++;
+      if(stEl) stEl.textContent='✅';
+      progFill.style.width=Math.round(done/total*100)+'%';
+    } catch(e){
+      errs.push(p.name);
+      if(stEl) stEl.textContent='❌';
+      done++;
+      progFill.style.width=Math.round(done/total*100)+'%';
+    }
+  }
+
+  if(uploaded.length){
+    upd(fs=>{
+      uploaded.forEach(p=>{
+        const id=uid();
+        fs[id]={ id, name:p.name, type:'file', fileType:p.fileType, url:p.url, sbPath:p.path, parentId:cur };
+        if(!fs[cur].children) fs[cur].children=[];
+        fs[cur].children.push(id);
+      });
+    });
+  }
+
+  setTimeout(()=>progWr.style.display='none', 600);
+  if(errs.length) showErr(errEl,'❌ فشل رفع: '+errs.join(', '));
+  if(uploaded.length){
+    closeOv('uploadOv');
+    toast(`✅ تم رفع ${uploaded.length} ملف بنجاح`, 'ok');
+    render();
+  }
+}
+
+/* ══════════════════════════════════
+   DELETE / RENAME
+══════════════════════════════════ */
+function collectSbPaths(fs, id){
+  const it=fs[id]; if(!it) return [];
+  let paths=[];
+  if(it.sbPath) paths.push(it.sbPath);
+  (it.children||[]).forEach(c=>{ paths=paths.concat(collectSbPaths(fs,c)); });
+  return paths;
+}
+
+async function removeItem(id){
+  if(!admin) return;
+  const fs=FS(), it=fs[id]; if(!it) return;
+  if(!confirm(it.type==='folder' ? `حذف المجلد "${it.name}" وكل محتوياته؟` : `حذف الملف "${it.name}"؟`)) return;
+  const paths=collectSbPaths(fs,id);
+  upd(fs=>{
+    deepDel(fs,id);
+    const p=fs[it.parentId];
+    if(p) p.children=(p.children||[]).filter(c=>c!==id);
+  });
+  if(paths.length) sbDelete(paths).catch(()=>{});
+  if(id===cur) cur=it.parentId||'root';
+  toast('🗑️ تم الحذف','ok'); render();
+}
+
+function deepDel(fs,id){ const it=fs[id]; if(!it) return; (it.children||[]).forEach(c=>deepDel(fs,c)); delete fs[id]; }
+
+function startRename(id){
+  const fs=FS(), it=fs[id]; if(!it) return;
+  rnId=id;
+  document.getElementById('renameInp').value=it.name;
+  openOv('renameOv');
+  setTimeout(()=>document.getElementById('renameInp').focus(),150);
+}
+
+function doRename(){
+  const val=document.getElementById('renameInp').value.trim();
+  if(!val||!rnId) return;
+  upd(fs=>{ fs[rnId].name=val; });
+  closeOv('renameOv'); toast('✅ تم تغيير الاسم','ok'); render(); rnId=null;
+}
+
+/* ══════════════════════════════════
+   CONTEXT MENU
+══════════════════════════════════ */
+let ctxEl=null;
+function showCtx(e,id,kind){
+  e.preventDefault(); e.stopPropagation();
+  hideCtx();
+  const opts=[];
+  if(kind==='folder'){
+    opts.push({l:'📂 فتح', fn:()=>navTo(id)});
+    if(admin){
+      opts.push({l:'✏️ إعادة تسمية', fn:()=>startRename(id)});
+      opts.push({l:'🗑️ حذف', fn:()=>removeItem(id), cls:'danger'});
+    }
+  } else {
+    opts.push({l:'👁️ معاينة', fn:()=>openFile(id)});
+    opts.push({l:'⬇️ تنزيل',  fn:()=>dlFile(id)});
+    if(admin){
+      opts.push({l:'✏️ إعادة تسمية', fn:()=>startRename(id)});
+      opts.push({l:'🗑️ حذف', fn:()=>removeItem(id), cls:'danger'});
+    }
+  }
+  const menu=document.getElementById('ctx');
+  menu.innerHTML=opts.map((o,i)=>`<div class="ctx-item ${o.cls||''}" data-i="${i}">${o.l}</div>`).join('');
+  menu.querySelectorAll('.ctx-item').forEach((el,i)=>{ el.onclick=()=>{ hideCtx(); opts[i].fn(); }; });
+  menu.style.display='block';
+  menu.style.top =Math.min(e.clientY, window.innerHeight-opts.length*42-20)+'px';
+  menu.style.left=Math.min(e.clientX, window.innerWidth-200)+'px';
+}
+function hideCtx(){ document.getElementById('ctx').style.display='none'; }
+document.addEventListener('click', hideCtx);
+
+/* ══════════════════════════════════
+   FILE VIEWER
+══════════════════════════════════ */
+let viewItem=null;
+function openFile(id){
+  const fs=FS(), it=fs[id]; if(!it) return;
+  viewItem=it;
+  const src = it.url || it.data || '';
+  document.getElementById('viewerName').innerHTML=`${it.fileType==='pdf'?'📄':it.fileType==='pptx'?'📊':'🖼️'} ${esc(it.name)}`;
+  const body=document.getElementById('viewerBody');
+  body.innerHTML='';
+  if(it.fileType==='img'){
+    const img=document.createElement('img'); img.src=src; img.alt=it.name; body.appendChild(img);
+  } else if(it.fileType==='pdf'){
+    const fr=document.createElement('iframe'); fr.src=src; body.appendChild(fr);
+  } else {
+    body.innerHTML=`<div style="text-align:center;color:#fff">
+      <div style="font-size:80px;margin-bottom:20px">📊</div>
+      <div style="font-size:20px;font-weight:800;margin-bottom:12px">${esc(it.name)}</div>
+      <div style="font-size:14px;opacity:0.65;margin-bottom:24px">ملفات PowerPoint تُفتح بعد التنزيل</div>
+      <button onclick="doDownload()" style="padding:12px 32px;background:#ff9b42;color:#fff;border:none;border-radius:50px;font-size:16px;font-weight:800;cursor:pointer;font-family:'Tajawal',sans-serif">⬇️ تنزيل</button>
+    </div>`;
+  }
+  document.getElementById('viewer').classList.add('open');
+}
+
+function closeViewer(){ document.getElementById('viewer').classList.remove('open'); document.getElementById('viewerBody').innerHTML=''; viewItem=null; }
+function doDownload(){ if(!viewItem) return; const a=document.createElement('a'); a.href=viewItem.url||viewItem.data||''; a.download=viewItem.name; a.click(); }
+function dlFile(id){ const fs=FS(),it=fs[id]; if(!it) return; const a=document.createElement('a'); a.href=it.url||it.data||''; a.download=it.name; a.click(); }
+
+/* ══════════════════════════════════
+   OVERLAYS / UTILS
+══════════════════════════════════ */
+function openOv(id)  { document.getElementById(id).classList.add('open'); }
+function closeOv(id) { document.getElementById(id).classList.remove('open'); }
+
+function toast(msg,type=''){
+  const w=document.getElementById('toastWrap'), el=document.createElement('div');
+  el.className='toast '+type; el.textContent=msg; w.appendChild(el);
+  setTimeout(()=>{ el.style.transition='opacity 0.4s'; el.style.opacity='0'; setTimeout(()=>el.remove(),400); }, 2800);
+}
+
+function showErr(el,msg){ el.textContent=msg; el.style.display='block'; }
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+/* drag & drop on upload zone */
+const dzEl=document.getElementById('dz');
+dzEl.addEventListener('dragover',e=>{ e.preventDefault(); dzEl.classList.add('over'); });
+dzEl.addEventListener('dragleave',()=>dzEl.classList.remove('over'));
+dzEl.addEventListener('drop',e=>{ e.preventDefault(); dzEl.classList.remove('over'); const files=e.dataTransfer.files; if(!files.length) return; const dt=new DataTransfer(); Array.from(files).forEach(f=>dt.items.add(f)); document.getElementById('fileInp').files=dt.files; onFiles(document.getElementById('fileInp')); });
+
+document.addEventListener('dragover',e=>e.preventDefault());
+document.addEventListener('drop',e=>e.preventDefault());
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){ closeViewer(); ['folderOv','uploadOv','authOv','cpwOv','renameOv'].forEach(closeOv); }
+  if(e.key==='Backspace'&&!['INPUT','TEXTAREA'].includes(document.activeElement.tagName)){
+    const fs=FS(),it=fs[cur]; if(it&&it.parentId) navTo(it.parentId);
+  }
+});
+
+/* ══════════════════════════════════
+   FULLSCREEN
+══════════════════════════════════ */
+function toggleFS(){
+  const btn = document.getElementById('fsBtn');
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen().catch(()=>{});
+    btn.textContent = '✕ خروج';
+    btn.title = 'خروج من ملء الشاشة';
+  } else {
+    document.exitFullscreen().catch(()=>{});
+    btn.textContent = '⛶';
+    btn.title = 'ملء الشاشة';
+  }
+}
+document.addEventListener('fullscreenchange', ()=>{
+  const btn = document.getElementById('fsBtn');
+  if(!document.fullscreenElement){
+    btn.textContent = '⛶';
+    btn.title = 'ملء الشاشة';
+  }
+});
+
+/* ══════════════════════════════════
+   INIT
+══════════════════════════════════ */
+upd(fs=>{ if(!fs.root) fs.root={id:'root',name:'الرئيسية',type:'folder',children:[],parentId:null}; });
+render();
+</script>
+</body>
+</html>
